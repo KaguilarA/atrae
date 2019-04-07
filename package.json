@@ -10,6 +10,15 @@
     "Angular",
     "MEAN"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaguilarA/atrae.git"
+  },
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
+  "homepage": "https://atrae.herokuapp.com/",
   "scripts": {
     "ng": "ng",
     "start": "nodemon",
