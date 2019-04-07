@@ -10,13 +10,13 @@ const gulp = require(`gulp`),
   };
 
 gulp.task(`connect`, async () => {
-  await exec(`ng build`);
+  await exec(`npm build`);
   await exec.reporter();
   nodemon();
 })
 
 gulp.task(`reload`, async() => {
-  await exec(`ng build`);
+  await exec(`npm build`);
   await exec.reporter();
 });
 
