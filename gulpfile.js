@@ -1,6 +1,6 @@
 const gulp = require(`gulp`),
   nodemon = require(`gulp-nodemon`),
-  exec = require(`gulp-exec`),
+  exec = require('child_process').exec,
   paths = {
     components: {
       ts: `./public/src/**/**/**.ts`,
@@ -9,19 +9,20 @@ const gulp = require(`gulp`),
     }
   };
 
-gulp.task(`connect`, async () => {
-  await exec(`npm build`);
-  await exec.reporter();
+gulp.task(`connect`, () => {
   nodemon();
 })
 
-gulp.task(`reload`, async() => {
-  await exec(`npm build`);
-  await exec.reporter();
-});
+gulp.task(`build`, (cb) => {
+  exec('ng build', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})
 
 gulp.task(`watch`, () => {
-  gulp.watch([paths.components.views, paths.components.styles, paths.components.ts], gulp.series([`reload`], () => {}));
+  gulp.watch([paths.components.views, paths.components.styles, paths.components.ts], gulp.series([`build`], () => {}));
 });
 
-gulp.task(`default`, gulp.series([`connect`, `reload`, `watch`], () => {}));
+gulp.task(`default`, gulp.series([`connect`, `build`, `watch`], () => {}));
