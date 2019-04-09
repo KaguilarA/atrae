@@ -220,7 +220,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<main class=\"flexContainerCenter\" id=\"loginContainer\">\n  <mat-card class=\"loginContainer\">\n\n    <mat-card-content>\n\n      <div class=\"full-width\">\n        <h2 class=\"textAligneCenter mt-1 half-width mx-auto\">Ingrese sus credenciales para iniciar sesion</h2>\n      </div>\n\n      <form action=\"\" method=\"post\" class=\"container-fluid flexContainerCenter row\" autocomplete=\"off\">\n\n        <div class=\"col-md-7 mt-1\">\n          <mat-form-field class=\"full-width\">\n            <input matInput placeholder=\"Correo electrónico\" [formControl]=\"emailFormControl\"\n              [errorStateMatcher]=\"matcher\" type=\"email\" id>\n            <mat-hint>Ingrese su correo electrónico</mat-hint>\n            <mat-error *ngIf=\"emailFormControl.hasError('email') && !emailFormControl.hasError('required')\">\n              Ingrese un correo electrónico válido\n            </mat-error>\n            <mat-error *ngIf=\"emailFormControl.hasError('required')\">\n              El correo electrónico es <strong>requerido</strong>\n            </mat-error>\n          </mat-form-field>\n        </div>\n\n        <div class=\"col-md-7 mt-2\">\n          <mat-form-field class=\"full-width\">\n            <input matInput placeholder=\"Contraseña\" [formControl]=\"passwordFormControl\" [errorStateMatcher]=\"matcher\"\n              type=\"password\" pattern=\"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\\S{6,}\">\n            <mat-hint>Ingrese su contraseña</mat-hint>\n            <mat-error *ngIf=\"passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')\">\n              Please enter a valid email address\n            </mat-error>\n            <mat-error *ngIf=\"passwordFormControl.hasError('required')\">\n              La contraseña es <strong>requerida</strong>\n            </mat-error>\n          </mat-form-field>\n        </div>\n\n        <div class=\"col-md-12 mt-3 textAligneCenter\">\n          <button mat-button>Iniciar sesión</button>\n        </div>\n\n\n      </form>\n\n\n    </mat-card-content>\n  </mat-card>\n</main>\n"
+module.exports = "<main class=\"flexContainerCenter\" id=\"loginContainer\">\n  <mat-card class=\"loginContainer\">\n\n    <mat-card-content>\n\n      <div class=\"full-width\">\n        <h2 class=\"textAligneCenter mt-1 half-width mx-auto\">Ingrese sus credenciales para iniciar sesion</h2>\n      </div>\n\n      <form action=\"\" method=\"post\" class=\"container-fluid flexContainerCenter row\" autocomplete=\"off\">\n\n        <div class=\"col-md-7 mt-1\">\n          <mat-form-field class=\"full-width\">\n            <input matInput placeholder=\"Correo electrónico\" [formControl]=\"emailFormControl\"\n              [errorStateMatcher]=\"matcher\" type=\"email\" id>\n            <mat-hint>Ingrese su correo electrónico</mat-hint>\n            <mat-error *ngIf=\"emailFormControl.hasError('email') && !emailFormControl.hasError('required')\">\n              Ingrese un correo electrónico válido\n            </mat-error>\n            <mat-error *ngIf=\"emailFormControl.hasError('required')\">\n              El correo electrónico es <strong>requerido</strong>\n            </mat-error>\n          </mat-form-field>\n        </div>\n\n        <div class=\"col-md-7 mt-2\">\n          <mat-form-field class=\"full-width\">\n            <input matInput placeholder=\"Contraseña\" [formControl]=\"passwordFormControl\" [errorStateMatcher]=\"matcher\"\n              type=\"password\" pattern=\"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\\S{6,}\">\n            <mat-hint>Ingrese su contraseña</mat-hint>\n            <mat-error *ngIf=\"passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')\">\n              Please enter a valid email address\n            </mat-error>\n            <mat-error *ngIf=\"passwordFormControl.hasError('required')\">\n              La contraseña es <strong>requerida</strong>\n            </mat-error>\n          </mat-form-field>\n        </div>\n\n        <div class=\"col-md-12 mt-3 textAligneCenter\">\n          <button mat-button (click)=\"onSubmit()\">Iniciar sesión</button>\n        </div>\n\n\n      </form>\n\n\n    </mat-card-content>\n  </mat-card>\n</main>\n"
 
 /***/ }),
 
@@ -248,7 +248,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "../node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "../node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "../node_modules/@angular/forms/fesm5/forms.js");
+
 
 
 
@@ -263,17 +265,21 @@ var MyErrorStateMatcher = /** @class */ (function () {
 }());
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
-        this.emailFormControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email,
+    function LoginComponent(router) {
+        this.router = router;
+        this.tittle = "Login";
+        this.emailFormControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].email,
         ]);
-        this.passwordFormControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]("", [
-            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+        this.passwordFormControl = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]("", [
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required,
         ]);
         this.matcher = new MyErrorStateMatcher();
     }
-    LoginComponent.prototype.ngOnInit = function () {
+    LoginComponent.prototype.ngOnInit = function () { };
+    LoginComponent.prototype.onSubmit = function () {
+        this.router.navigate(['/home']);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -281,7 +287,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.scss */ "./src/app/login/login.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());

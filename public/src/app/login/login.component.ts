@@ -1,6 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  FormControl,
+  FormGroupDirective,
+  NgForm,
+  Validators
+} from '@angular/forms';
+import {
+  ErrorStateMatcher
+} from '@angular/material/core';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -15,9 +28,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor() { }
+  tittle = `Login`;
 
-  ngOnInit() {
+  constructor(private router: Router) { }
+
+  ngOnInit() {}
+
+  onSubmit() {
+    this.router.navigate(['/home'])
   }
 
   emailFormControl = new FormControl('', [
@@ -25,7 +43,7 @@ export class LoginComponent implements OnInit {
     Validators.email,
   ]);
 
-  passwordFormControl = new FormControl (``, [
+  passwordFormControl = new FormControl(``, [
     Validators.required,
   ]);
 
