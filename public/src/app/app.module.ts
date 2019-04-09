@@ -56,11 +56,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   LoginComponent
 } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

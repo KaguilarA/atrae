@@ -3,39 +3,45 @@
 
     <mat-card-content>
 
-      <div>
-        <h2 class="textAligneCenter m-1">Ingrese sus credenciales para iniciar sesion</h2>
+      <div class="full-width">
+        <h2 class="textAligneCenter mt-1 half-width mx-auto">Ingrese sus credenciales para iniciar sesion</h2>
       </div>
 
       <form action="" method="post" class="container-fluid flexContainerCenter row" autocomplete="off">
 
-        <mat-form-field class="col-md-5">
-          <input matInput placeholder="Correo electrónico" [formControl]="emailFormControl"
-            [errorStateMatcher]="matcher" type="email">
-          <mat-hint>Ingrese su correo electrónico</mat-hint>
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Ingrese un correo electrónico válido
-          </mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('required')">
-            El correo electrónico es <strong>requerido</strong>
-          </mat-error>
-        </mat-form-field>
+        <div class="col-md-7 mt-1">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Correo electrónico" [formControl]="emailFormControl"
+              [errorStateMatcher]="matcher" type="email" id>
+            <mat-hint>Ingrese su correo electrónico</mat-hint>
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Ingrese un correo electrónico válido
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              El correo electrónico es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-7 mt-2">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Contraseña" [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+              type="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\S{6,}">
+            <mat-hint>Ingrese su contraseña</mat-hint>
+            <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              La contraseña es <strong>requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12 mt-3 textAligneCenter">
+          <button mat-button>Iniciar sesión</button>
+        </div>
 
 
-        <mat-form-field class="col-md-5">
-          <input matInput placeholder="Contraseña" [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
-            type="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\S{6,}">
-          <mat-hint>Ingrese su contraseña</mat-hint>
-          <mat-error *ngIf="passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="passwordFormControl.hasError('required')">
-            La contraseña es <strong>requerida</strong>
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
       </form>
 
 
