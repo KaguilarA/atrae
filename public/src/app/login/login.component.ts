@@ -23,7 +23,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-root',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/home/main'])
   }
 
   emailFormControl = new FormControl('', [

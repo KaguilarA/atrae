@@ -1,6 +1,7 @@
 import {
   BrowserModule
 } from '@angular/platform-browser';
+import { LayoutModule } from '@angular/cdk/layout';
 import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
@@ -12,7 +13,7 @@ import {
 } from './app-routing.module';
 import {
   AppComponent
-} from './main/app.component';
+} from './app.component';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -53,16 +54,26 @@ import {
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {
   LoginComponent
 } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { MainComponent } from './home/main/main.component';
+import { SchoolsRouteComponent } from './home/schools-route/schools-route.component';
+import { PaylistComponent } from './home/paylist/paylist.component';
+import { ReportsComponent } from './home/reports/reports.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent
+    LoginComponent, 
+    HomeComponent,
+    MainComponent,
+    SchoolsRouteComponent,
+    PaylistComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -105,6 +116,8 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    FontAwesomeModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

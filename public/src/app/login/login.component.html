@@ -1,14 +1,10 @@
 <main class="flexContainerCenter" id="loginContainer">
   <mat-card class="loginContainer">
-
     <mat-card-content>
-
       <div class="full-width">
         <h2 class="textAligneCenter mt-1 half-width mx-auto">Ingrese sus credenciales para iniciar sesion</h2>
       </div>
-
       <form action="" method="post" class="container-fluid flexContainerCenter row" autocomplete="off">
-
         <div class="col-md-7 mt-1">
           <mat-form-field class="full-width">
             <input matInput placeholder="Correo electrónico" [formControl]="emailFormControl"
@@ -22,7 +18,6 @@
             </mat-error>
           </mat-form-field>
         </div>
-
         <div class="col-md-7 mt-2">
           <mat-form-field class="full-width">
             <input matInput placeholder="Contraseña" [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
@@ -40,11 +35,7 @@
         <div class="col-md-12 mt-3 textAligneCenter">
           <button mat-button (click)="onSubmit()">Iniciar sesión</button>
         </div>
-
-
       </form>
-
-
     </mat-card-content>
   </mat-card>
 </main>

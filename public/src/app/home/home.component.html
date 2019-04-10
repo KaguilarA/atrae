@@ -1,16 +1,53 @@
-<mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <button type="button" mat-button (click)="drawer.toggle()">
-        Toggle sidenav
-      </button>
-    </div>
-  
-  </mat-drawer-container>
+<mat-drawer-container class="home-container" autosize>
+
+  <mat-toolbar color="primary">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <fa-icon [icon]="faBars"></fa-icon>
+    </button>
+    <span class="separator"></span>
+    <button type="button" mat-button>
+      <fa-icon [icon]="faCalendar"></fa-icon>
+    </button>
+    <button type="button" mat-button>
+      <fa-icon [icon]="faBell"></fa-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-drawer #drawer class="sidebar flexContainerCenter p-fixed" mode="side" color="primary">
+    <mat-list class="mt-4">
+      <a routerLink="/home/main">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faHome" class="sidebar-item-icon"></fa-icon>
+          <p>Inicio</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/routes">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faBus" class="sidebar-item-icon"></fa-icon>
+          <p>Ruta</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/paylist">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faClipboardList" class="sidebar-item-icon"></fa-icon>
+          <p>Listas de pago</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/reports">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faBriefcase" class="sidebar-item-icon"></fa-icon>
+          <p>Reportes</p>
+        </mat-list-item>
+      </a>
+    </mat-list>
+
+
+  </mat-drawer>
+
+
+
+  <div class="views-container">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
