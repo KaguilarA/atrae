@@ -2,6 +2,7 @@ import {
   BrowserModule
 } from '@angular/platform-browser';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
 import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
@@ -64,6 +65,11 @@ import { MainComponent } from './home/main/main.component';
 import { SchoolsRouteComponent } from './home/schools-route/schools-route.component';
 import { PaylistComponent } from './home/paylist/paylist.component';
 import { ReportsComponent } from './home/reports/reports.component';
+import { RegisterContractComponent } from './home/contract/register-contract/register-contract.component';
+import { ContractComponent } from './home/contract/contract.component';
+import { ViewComponent } from './home/contract/view/view.component';
+import { UserService } from './services/users/user.service';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -73,9 +79,13 @@ import { ReportsComponent } from './home/reports/reports.component';
     MainComponent,
     SchoolsRouteComponent,
     PaylistComponent,
-    ReportsComponent
+    ReportsComponent,
+    RegisterContractComponent,
+    ContractComponent,
+    ViewComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
@@ -119,7 +129,7 @@ import { ReportsComponent } from './home/reports/reports.component';
     FontAwesomeModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [UserService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,35 +1,56 @@
+@import './../../settings';
+
 .home-container {
   width: 100%;
 
   .sidebar {
     display: flex;
-    width: 15% !important;
     height: 100vh !important;
     align-items: center;
     justify-content: center;
+
+    @include desktop() {
+      width: 15% !important;
+    }
+
+    @include tablet('portrait') {
+      width: 30%;
+    }
+
+    @include tablet('landscape') {
+      width: 20%;
+    }
 
     .button-sidebar {
       font-size: 1.9em !important;
     }
 
     .sidebar-item-list {
-      margin-left: 10%;
-      width: 100%;
+      padding-left: 5%;
+      width: 90%;
       height: 30%;
       text-align: center;
 
       .sidebar-item-icon {
         font-size: 1.2em;
-        margin-right: 10px
+        padding-right: 10px
+      }
+
+      .sidebar-item-text {
+        font-size: 1em;
       }
 
       &:hover{
-        background: red;
+        background: $GrayHoverColor;
 
-        .sidebar-item-icon {
-          color:blue;
+        .sidebar-item-text, .sidebar-item-icon {
+          color: rgb(63, 81, 181);
         }
       }
+    }
+
+    .divider{
+      border: 1px $GrayHoverColor solid;
     }
   }
 

@@ -1,3 +1,13 @@
+@import '~@angular/material/theming';
+////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////Colors////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+$GrayHoverColor: rgba(245, 245, 245, 1);
+$BlackColor: rgba(0, 0, 0, 1);
+$WhiteC0lor: rgba(255, 255, 255, 1);
+
+
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////VARIABLES////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -11,6 +21,28 @@ $PhoneMinWidth: 481px;
 $PhoneMaxWidth: 767px;
 $LowPhoneMinWidht: 320px;
 $LowPhoneMaxWidht: 480px;
+
+
+
+
+// Define a custom mixin that takes in the current theme
+@mixin theme-color-grabber($theme) {
+  // Parse the theme and create variables for each color in the pallete
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  // Create theme specfic styles
+  .principal {
+    background-color: mat-color($primary);
+  }
+  .accent {
+    background-color: mat-color($accent);
+  }
+  .warn {
+    background-color: mat-color($warn);
+  }
+}
+
 
 // Device = Desktops
 // Screen = 1281px to higher resolution desktops

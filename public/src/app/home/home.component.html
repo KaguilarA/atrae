@@ -13,32 +13,81 @@
     </button>
   </mat-toolbar>
 
-  <mat-drawer #drawer class="sidebar flexContainerCenter p-fixed" mode="side" color="primary">
-    <mat-list class="mt-4">
-      <a routerLink="/home/main">
+  <mat-drawer #drawer class="sidebar flexContainerCenter p-fixed" mode="push" color="primary">
+    <mat-list class="mt-4" (click)="drawer.toggle()">
+      <a routerLink="/home/main" routerLinkActive="active">
         <mat-list-item class="center-md sidebar-item-list">
           <fa-icon [icon]="faHome" class="sidebar-item-icon"></fa-icon>
-          <p>Inicio</p>
+          <p class="sidebar-item-text">Inicio</p>
         </mat-list-item>
       </a>
-      <a routerLink="/home/routes">
+      <a routerLink="/home/routes" routerLinkActive="active">
         <mat-list-item class="center-md sidebar-item-list">
           <fa-icon [icon]="faBus" class="sidebar-item-icon"></fa-icon>
-          <p>Ruta</p>
+          <p class="sidebar-item-text">Ruta</p>
         </mat-list-item>
       </a>
-      <a routerLink="/home/paylist">
+      <a routerLink="/home/paylist" routerLinkActive="active">
         <mat-list-item class="center-md sidebar-item-list">
           <fa-icon [icon]="faClipboardList" class="sidebar-item-icon"></fa-icon>
-          <p>Listas de pago</p>
+          <p class="sidebar-item-text">Listas de pago</p>
         </mat-list-item>
       </a>
-      <a routerLink="/home/reports">
+      <a routerLink="/home/reports" routerLinkActive="active">
         <mat-list-item class="center-md sidebar-item-list">
           <fa-icon [icon]="faBriefcase" class="sidebar-item-icon"></fa-icon>
-          <p>Reportes</p>
+          <p class="sidebar-item-text">Reportes</p>
         </mat-list-item>
       </a>
+    </mat-list>
+
+    <mat-divider class="mt-1"></mat-divider>
+
+    <mat-list>
+      <a routerLink="/home/main" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faUser" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Lista de padres</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/routes" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faTimesCircle" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Atrasados</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/paylist" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faCalculator" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Calculadora</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/reports" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faBriefcase" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Reportes</p>
+        </mat-list-item>
+      </a>
+      <a routerLink="/home/reports" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list">
+          <fa-icon [icon]="faBriefcase" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Reportes</p>
+        </mat-list-item>
+      </a>
+      <a style="cursor: pointer" routerLinkActive="active">
+        <mat-list-item class="center-md sidebar-item-list" [matMenuTriggerFor]="registerContract">
+          <fa-icon [icon]="faFileContract" class="sidebar-item-icon"></fa-icon>
+          <p class="sidebar-item-text">Contratos</p>
+        </mat-list-item>
+      </a>
+
+      <mat-menu #registerContract="matMenu" xPosition="after" yPosition="above">
+        <a mat-menu-item routerLink="/home/registerContract" routerLinkActive="active"
+          (click)="drawer.toggle()">Registrar contrato</a>
+        <button mat-menu-item>Ver contratos</button>
+        <button mat-menu-item>Buscar contratos</button>
+        <button mat-menu-item>Archivados</button>
+      </mat-menu>
     </mat-list>
 
 

@@ -14,6 +14,7 @@ import {
 import {
   ErrorStateMatcher
 } from '@angular/material/core';
+import { LoginService } from '../services/login/login.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -28,24 +29,37 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  tittle = `Login`;
-
-  constructor(private router: Router) { }
-
-  ngOnInit() {}
-
-  onSubmit() {
-    this.router.navigate(['/home/main'])
-  }
-
-  emailFormControl = new FormControl('', [
+  email = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
-  passwordFormControl = new FormControl(``, [
-    Validators.required,
+  password = new FormControl('', [
+    Validators.required
   ]);
+
+  constructor(private router: Router, private _loginService: LoginService) { }
+
+  ngOnInit() {
+  }
+
+  async onSubmit(pEmail, pPassword) {
+    let dataToLogin = {
+      email: pEmail,
+      password: pPassword
+    };
+    let loginUser = await this._loginService.logIn(dataToLogin);
+    console.log('loginUser: ', loginUser);
+    if (loginUser === true) {
+      this.router.navigate(['/home/main']);
+    } else {
+      alert(`No podes entrar mamador`);
+    }
+    
+  }
+
+  
+
+  
 
   matcher = new MyErrorStateMatcher();
 

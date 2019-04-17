@@ -8,17 +8,17 @@ const bodyParser = require('body-parser'),
   api = require('./api/api.route');
 
 let db = mongoose.connection,
-dburl = process.env.MONGODB_URI;
+  dburl = process.env.MONGODB_URI;
 
 mongoose.set('useCreateIndex', true)
 mongoose.connect(dburl, {
-useNewUrlParser: true
+  useNewUrlParser: true
 });
 
 db.on('error', console.error.bind(console, 'Error de conexión: '));
 
 db.once('open', () => {
-console.log('Base de datos conectada correctamente');
+  console.log('Base de datos conectada correctamente');
 });
 
 app.use(`/`, express.static(__dirname + '/public/dist/'));
