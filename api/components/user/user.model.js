@@ -19,7 +19,8 @@ var userSchema = new mongoose.Schema({
   _companyName: {type: String},
   _password: {type: String},
   // Manager Only
-  _contractId: {type: String},
+  _contractId: {type: mongoose.Schema.Types.ObjectId, ref: 'Contract', required: false},
+  _idManager: {type: String},
   _studentsOnCharge: {type: Array, required: false},
   // Student Only
   _grade: {type: String},

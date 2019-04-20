@@ -3,6 +3,7 @@ const bodyParser = require('body-parser'),
   morgan = require('morgan'),
   mongoose = require('mongoose'),
   app = express(),
+  path = require('path'),
   dotenv = require('dotenv').config(),
   port = Number(process.env.PORT),
   api = require('./api/api.route');
@@ -23,7 +24,9 @@ db.once('open', () => {
 
 app.use(`/`, express.static(__dirname + '/public/dist/'));
 
-app.use(`/data/`, express.static(__dirname + '/public/'));
+app.get(`*`, (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/dist/index.html'));
+});
 
 app.use(morgan(`dev`));
 

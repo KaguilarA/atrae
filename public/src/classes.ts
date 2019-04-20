@@ -181,11 +181,14 @@ class Manager extends User {
   protected _studentsOnCharge:string[];
   // tslint:disable-next-line: variable-name
   protected _contractId:string;
+  // tslint:disable-next-line: variable-name
+  protected _idManager:string;
 
   constructor(pUserData:any) {
     super(pUserData);
     this.students =  pUserData._studentsOnCharge;
     this.contract = pUserData._contractId;
+    this.managerIdentification = pUserData._idManager;
   }
 
   get students():any {
@@ -202,6 +205,14 @@ class Manager extends User {
 
   set contract(pNewContract:string) {
     this._contractId = pNewContract;
+  }
+
+  get managerIdentification():string {
+    return this._idManager;
+  }
+
+  set managerIdentification(pNewManagerIdentification:string) {
+    this._idManager = pNewManagerIdentification;
   }
 }
 
@@ -269,16 +280,100 @@ class Student extends User {
   }
 }
 
+class Contract {
+  // tslint:disable-next-line: variable-name
+  protected _id:string;
+  // tslint:disable-next-line: variable-name
+  protected _state:number;
+  // tslint:disable-next-line: variable-name
+  protected _managerId:string;
+  // tslint:disable-next-line: variable-name
+  protected _studentId:any[any];
+  // tslint:disable-next-line: variable-name
+  protected _address:string;
+  // tslint:disable-next-line: variable-name
+  protected _year:number;
+  // tslint:disable-next-line: variable-name
+  protected _payment:string;
+  // tslint:disable-next-line: variable-name
+  protected _contractId:number;
+
+  constructor(pContractData:any) {
+    this.id = pContractData._id;
+    this.state = pContractData._state;
+    this.managerId = pContractData._managerId;
+    this.studentId = pContractData._studentId;
+    this.address = pContractData._address;
+    this.year = pContractData._year;
+    this.payment = pContractData._payment;
+    this.contractId = pContractData._contractId;
+  }
+
+  get id():string {
+    return this._id;
+  }
+
+  set id(pNewId:string) {
+    this._id = pNewId;
+  }
+
+  get state():number {
+    return this._state;
+  }
+
+  set state(pNewState:number) {
+    this._state = pNewState;
+  }
+
+  get managerId():string {
+    return this._managerId;
+  }
+
+  set managerId(pNewManagerId:string) {
+    this._managerId = pNewManagerId;
+  }
+
+  get studentId():any[any] {
+    return this._studentId;
+  }
+
+  set studentId(pNewStudentId:any[any]) {
+    this._studentId = pNewStudentId;
+  }
+
+  get address():string {
+    return this._address;
+  }
+
+  set address(pNewAddress:string) {
+    this._address = pNewAddress;
+  }
+
+  get year():number {
+    return this._year;
+  }
+
+  set year(pNewYear:number) {
+    this._year = pNewYear;
+  }
+
+  get payment():string {
+    return this._payment;
+  }
+
+  set payment(pNewPayment:string) {
+    this._payment = pNewPayment;
+  }
+
+  get contractId():number {
+    return this._contractId;
+  }
+
+  set contractId(pNewContractId:number) {
+    this._contractId = pNewContractId;
+  }
+}
+
 export { User, Owner, Manager, Student };
 
-// _role:Owner
-// _state:1
-// _name1:Kevin
-// _name2:Josué
-// _surname1:Aguilar
-// _surname2:Alvarado
-// _email:kaguilara@ucenfotec.ac.cr
-// _phone:64445188
-// _birthDate:Tue Oct 22 1996 18:00:00 GMT-0600 (Central Standard Time)
-// _password:1kevin9
-// _companyName:Transportes Aguilar Alvarado
+export { Contract };

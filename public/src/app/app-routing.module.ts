@@ -30,33 +30,38 @@ import {
 import {
   RegisterContractComponent
 } from './home/contract/register-contract/register-contract.component';
+import { ViewComponent as ViewContracts } from './home/contract/view/view.component';
 
 const routes: Routes = [{
-      path: '',
-      component: LoginComponent
-    },
-    {
-      path: 'home',
-      component: HomeComponent,
-      children: [{
-          path: 'main',
-          component: MainComponent
-        },
-        {
-          path: `routes`,
-          component: SchoolsRouteComponent
-        },
-        {
-          path: `paylist`,
-          component: PaylistComponent
-        },
-        {
-          path: `reports`,
-          component: ReportsComponent
-        },
-        {
-          path: 'registerContract',
-          component: RegisterContractComponent
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    children: [{
+        path: 'main',
+        component: MainComponent
+      },
+      {
+        path: `routes`,
+        component: SchoolsRouteComponent
+      },
+      {
+        path: `paylist`,
+        component: PaylistComponent
+      },
+      {
+        path: `reports`,
+        component: ReportsComponent
+      },
+      {
+        path: 'registerContract',
+        component: RegisterContractComponent
+      },
+      {
+        path: 'viewContracts',
+        component: ViewContracts
       }
     ]
   },

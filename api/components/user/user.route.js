@@ -18,7 +18,7 @@ router.route('/save_user')
   });
 
 router.route('/get_all_users')
-  .get((req, res) => {
+  .put((req, res) => {
     users.listUser(req, res);
   });
 

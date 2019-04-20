@@ -2,14 +2,14 @@
 
   <mat-toolbar color="primary">
     <button type="button" mat-button (click)="drawer.toggle()">
-      <fa-icon [icon]="faBars"></fa-icon>
+      <fa-icon [icon]="faBars" class="btnIcon"></fa-icon>
     </button>
     <span class="separator"></span>
     <button type="button" mat-button>
-      <fa-icon [icon]="faCalendar"></fa-icon>
+      <fa-icon [icon]="faCalendar" class="btnIcon"></fa-icon>
     </button>
     <button type="button" mat-button>
-      <fa-icon [icon]="faBell"></fa-icon>
+      <fa-icon [icon]="faBell" class="btnIcon"></fa-icon>
     </button>
   </mat-toolbar>
 
@@ -84,7 +84,7 @@
       <mat-menu #registerContract="matMenu" xPosition="after" yPosition="above">
         <a mat-menu-item routerLink="/home/registerContract" routerLinkActive="active"
           (click)="drawer.toggle()">Registrar contrato</a>
-        <button mat-menu-item>Ver contratos</button>
+        <button mat-menu-item routerLink="/home/viewContracts">Ver contratos</button>
         <button mat-menu-item>Buscar contratos</button>
         <button mat-menu-item>Archivados</button>
       </mat-menu>

@@ -40,6 +40,14 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private _loginService: LoginService) { }
 
   ngOnInit() {
+    this.checkSesion();
+  }
+
+  checkSesion(){
+    let loginUser = this._loginService.checkLoggedUser();
+    if (loginUser === true) {
+      this.router.navigate(['/home/main']);
+    }
   }
 
   async onSubmit(pEmail, pPassword) {
@@ -48,19 +56,12 @@ export class LoginComponent implements OnInit {
       password: pPassword
     };
     let loginUser = await this._loginService.logIn(dataToLogin);
-    console.log('loginUser: ', loginUser);
     if (loginUser === true) {
       this.router.navigate(['/home/main']);
     } else {
       alert(`No podes entrar mamador`);
     }
-    
   }
 
-  
-
-  
-
   matcher = new MyErrorStateMatcher();
-
 }

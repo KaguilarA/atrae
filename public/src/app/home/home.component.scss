@@ -63,16 +63,18 @@
     font-size: 1.3em;
   }
 
-  .views-container {
-    display: flex;
-    height: 90vh;
-    align-items: center;
-    justify-content: center;
-    overflow-y: scroll;
-  }
+  // .views-container {
+  //   display: flex;
+  //   height: 90vh;
+  //   align-items: center;
+  //   justify-content: center;
+  //   overflow-y: scroll;
+  // }
 }
 
-
+.btnIcon {
+  font-size: 1.5em;
+}
 
 .example-sidenav {
 

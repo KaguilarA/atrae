@@ -1,6 +1,6 @@
 const gulp = require(`gulp`),
   nodemon = require(`gulp-nodemon`),
-  exec = require('child_process').exec,
+  ngBuild = require('gulp-ng-build'),
   paths = {
     components: {
       ts: `./public/src/**/**/**.ts`,
@@ -13,12 +13,8 @@ gulp.task(`connect`, () => {
   nodemon();
 })
 
-gulp.task(`build`, (cb) => {
-  exec('ng build', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
+gulp.task(`build`, ngBuild, function(){
+  console.log('build done with success'); 
 })
 
 gulp.task(`watch`, () => {

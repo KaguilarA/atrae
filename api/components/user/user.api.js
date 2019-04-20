@@ -1,5 +1,6 @@
 const userSchema = require('./user.model'),
   bcrypt = require('bcrypt');
+
 module.exports.logIn = (req, res, next) => {
   let email = req.body.email,
     password = req.body.password;
@@ -35,8 +36,9 @@ module.exports.logIn = (req, res, next) => {
     };
   })
 }
+
 module.exports.registerUser = (req, res, next) => {
-  var newUser = Object.assign(new userSchema(), req.body);
+  var newUser = new userSchema(req.body);
   newUser.save((err) => {
     if (err) {
       res.json({

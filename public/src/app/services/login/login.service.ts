@@ -10,6 +10,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
+  sesionStorageCollection:string = 'NnåværendeBrukerATRAE';
   constructor(private http:HttpClient, private _userService: UserService) { }
 
   async logIn(pUserData:any) {
@@ -30,16 +31,35 @@ export class LoginService {
     return donePromise;
   }
 
-  async getActiveUserData(pActiveUserId:string) {
-    let currentUser:any = await this._userService.getUserById(pActiveUserId);
+  checkLoggedUser() {
+    let logginData:any = JSON.parse(sessionStorage.getItem(this.sesionStorageCollection));
+    let isUserLogged:Boolean;
+    if (logginData !== null) {
+      isUserLogged = Boolean(logginData.condition);
+    } else {
+      isUserLogged = false;
+    }
+    
+    return isUserLogged;
+  }
+
+  async getActiveUserData() {
+    const isLogger:Boolean = this.checkLoggedUser();
+    let activeUserId:any;
+    if (isLogger === true) {
+      activeUserId = JSON.parse(sessionStorage.getItem(this.sesionStorageCollection));
+    } else {
+      
+    }
+    let currentUser:any = await this._userService.getUserById(activeUserId.id);
     return currentUser;
   }
 
   addCurrentUserLogged(pUserData:any){
-    sessionStorage.setItem('currentUser', JSON.stringify(pUserData));
+    sessionStorage.setItem(this.sesionStorageCollection, JSON.stringify(pUserData));
   }
 
   deleteCurrentUserLogged() {
-    sessionStorage.getItem('currentUser');
+    sessionStorage.getItem(this.sesionStorageCollection);
   }
 }

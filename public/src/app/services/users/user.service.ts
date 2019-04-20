@@ -15,7 +15,7 @@ export class UserService {
 
   async getAllUsers() {
     let doPromise = new Promise((resolve) => {
-      this.http.get('/api/get_all_users').subscribe(
+      this.http.put('/api/get_all_users', ``).subscribe(
         data => {
           let usersDb:any[any] = [];
           for (const user in data) {
